@@ -2,6 +2,7 @@ import BreadcrumHeader from "@/components/BreadcrumHeader";
 import DesktopSidebar from "@/components/Sidebar";
 import { ModeToggle } from "@/components/ThemeModeToggle";
 import { Separator } from "@/components/ui/separator";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import React from "react";
 
 function layout({ children }: { children: React.ReactNode }) {
@@ -11,7 +12,12 @@ function layout({ children }: { children: React.ReactNode }) {
       <div className="flex flex-col flex-1 min-h-screen">
         <header className="flex items-center justify-between px-6 py-4 h-[50px] container">
           <BreadcrumHeader />
-          <div className="gap-1 flex items-center"><ModeToggle/></div>
+          <div className="gap-1 flex items-center">
+            <ModeToggle />
+            <SignedIn>
+              <UserButton/>
+            </SignedIn>
+          </div>
         </header>
         <Separator />
         <div className="overflow-auto">
